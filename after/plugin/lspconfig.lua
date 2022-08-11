@@ -1,4 +1,5 @@
 local nvim_lsp = require('lspconfig')
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -11,6 +12,13 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+
+  -- use null-ls prettier instead
+  if client.name == "tsserver" then
+    client.server_capabilities.document_formatting = false -- 0.7 and earlier
+    client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+  end
+
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -34,21 +42,30 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
 
   -- formatting
-  if client.server_capabilities.documentFormattingProvider then
+  if client.supports_method("textDocument/formatting") then
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
     vim.api.nvim_create_autocmd("BufWritePre", {
-      group = vim.api.nvim_create_augroup("Format", { clear = true }),
+      group = augroup,
       buffer = bufnr,
-      callback = function() vim.lsp.buf.format() end
+      callback = function()
+        -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+        -- vim.lsp.buf.formatting_sync()
+        vim.lsp.buf.format({ bufnr = bufnr })
+      end,
     })
   end
 end
 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
+  capabilities = capabilities
 }
 
 nvim_lsp.sumneko_lua.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
