@@ -37,8 +37,9 @@ vim.opt.errorbells = false
 vim.opt.visualbell = true
 vim.opt.mouse = 'a'
 vim.opt.title = true
-vim.opt.signcolumn = 'number'
+-- vim.opt.signcolumn = 'number'
 vim.opt.tabpagemax = 50
+vim.opt.termguicolors = true
 
 -- Clipboard
 vim.opt.clipboard:append({ 'unnamedplus' })

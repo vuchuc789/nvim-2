@@ -11,3 +11,48 @@ vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true })
 
 vim.api.nvim_set_keymap('v', '>', '>gv', { noremap = true })
 vim.api.nvim_set_keymap('v', '<', '<gv', { noremap = true })
+
+vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<C-f>', ':Telescope live_grep<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-p>', ':Telescope find_files<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<space>a", "<cmd>Trouble workspace_diagnostics<cr>",
+  { silent = true, noremap = true }
+)
+vim.api.nvim_set_keymap("n", "<space>q", "<cmd>Trouble document_diagnostics<cr>",
+  { silent = true, noremap = true }
+)
+-- Currently not working
+-- vim.api.nvim_set_keymap("n", "gd", "<cmd>Trouble lsp_definition<cr>",
+--   { silent = true, noremap = true }
+-- )
+vim.api.nvim_set_keymap("n", "gr", "<cmd>Trouble lsp_references<cr>",
+  { silent = true, noremap = true }
+)
+vim.api.nvim_set_keymap("n", "gi", "<cmd>Trouble lsp_implementations<cr>",
+  { silent = true, noremap = true }
+)
+vim.api.nvim_set_keymap("n", "gt", "<cmd>Trouble lsp_type_definitions<cr>",
+  { silent = true, noremap = true }
+)
+vim.api.nvim_set_keymap("n", "<space>a", "<cmd>Trouble workspace_diagnostics<cr>",
+  { silent = true, noremap = true }
+)
+vim.api.nvim_set_keymap("n", "<space>q", "<cmd>Trouble document_diagnostics<cr>",
+  { silent = true, noremap = true }
+)
+
+vim.keymap.set("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+vim.keymap.set("v", "<space>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
+
+vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+
+vim.keymap.set("n", "<space>rn", "<cmd>Lspsaga rename<CR>", { silent = true })
+-- close rename win use <C-c> in insert mode or `q` in normal mode or `:q`
+
+vim.keymap.set("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
+vim.keymap.set("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })

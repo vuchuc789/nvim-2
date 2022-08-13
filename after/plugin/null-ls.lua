@@ -3,8 +3,8 @@ local command_resolver = require("null-ls.helpers.command_resolver")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local dynamic_command = function(params)
-  return command_resolver.from_node_modules(params)
-      or command_resolver.from_yarn_pnp(params)
+  return command_resolver.from_yarn_pnp(params)
+      or command_resolver.from_node_modules(params)
       or vim.fn.executable(params.command) == 1 and params.command
 end
 
@@ -27,8 +27,21 @@ end
 local sources = {
   null_ls.builtins.diagnostics.eslint.with({
     dynamic_command = dynamic_command,
-    diagnostics_format = "[Eslint] [#{c}] #{m} (#{s})"
+    diagnostics_format = "[#{c}] #{m} (#{s})",
+    filter = function(diagnostic)
+      local is_ignored = false;
+
+      -- ignore node error
+      if diagnostic.message:match("%(node:%d+%)") then
+        is_ignored = true;
+      end
+
+      return not is_ignored
+    end
   }),
+  -- null_ls.builtins.formatting.eslint.with({
+  --   dynamic_command = dynamic_command,
+  -- }),
   null_ls.builtins.formatting.prettier.with({
     dynamic_command = dynamic_command,
   }),
