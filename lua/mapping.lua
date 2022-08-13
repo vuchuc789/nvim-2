@@ -1,48 +1,48 @@
-vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true })
-vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true })
+vim.keymap.set('n', 'j', 'gj', { noremap = true })
+vim.keymap.set('n', 'k', 'gk', { noremap = true })
 
-vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true })
-vim.api.nvim_set_keymap('i', 'kj', '<Esc>', { noremap = true })
+vim.keymap.set('i', 'jk', '<Esc>', { noremap = true })
+vim.keymap.set('i', 'kj', '<Esc>', { noremap = true })
 
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true })
+vim.keymap.set('n', '<C-h>', '<C-w>h', { noremap = true })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { noremap = true })
 
-vim.api.nvim_set_keymap('v', '>', '>gv', { noremap = true })
-vim.api.nvim_set_keymap('v', '<', '<gv', { noremap = true })
+vim.keymap.set('v', '>', '>gv', { noremap = true })
+vim.keymap.set('v', '<', '<gv', { noremap = true })
 
-vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<C-f>', ':Telescope live_grep<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-p>', ':Telescope find_files<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-f>', ':Telescope live_grep<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-p>', ':Telescope find_files<CR>', { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap("n", "<space>a", "<cmd>Trouble workspace_diagnostics<cr>",
+vim.keymap.set("n", "<space>a", "<cmd>Trouble workspace_diagnostics<cr>",
   { silent = true, noremap = true }
 )
-vim.api.nvim_set_keymap("n", "<space>q", "<cmd>Trouble document_diagnostics<cr>",
+vim.keymap.set("n", "<space>q", "<cmd>Trouble document_diagnostics<cr>",
   { silent = true, noremap = true }
 )
 -- Currently not working
--- vim.api.nvim_set_keymap("n", "gd", "<cmd>Trouble lsp_definition<cr>",
+-- vim.keymap.set("n", "gd", "<cmd>Trouble lsp_definition<cr>",
 --   { silent = true, noremap = true }
 -- )
-vim.api.nvim_set_keymap("n", "gr", "<cmd>Trouble lsp_references<cr>",
+vim.keymap.set("n", "gr", "<cmd>Trouble lsp_references<cr>",
   { silent = true, noremap = true }
 )
-vim.api.nvim_set_keymap("n", "gi", "<cmd>Trouble lsp_implementations<cr>",
+vim.keymap.set("n", "gi", "<cmd>Trouble lsp_implementations<cr>",
   { silent = true, noremap = true }
 )
-vim.api.nvim_set_keymap("n", "gt", "<cmd>Trouble lsp_type_definitions<cr>",
+vim.keymap.set("n", "gt", "<cmd>Trouble lsp_type_definitions<cr>",
   { silent = true, noremap = true }
 )
-vim.api.nvim_set_keymap("n", "<space>a", "<cmd>Trouble workspace_diagnostics<cr>",
+vim.keymap.set("n", "<space>a", "<cmd>Trouble workspace_diagnostics<cr>",
   { silent = true, noremap = true }
 )
-vim.api.nvim_set_keymap("n", "<space>q", "<cmd>Trouble document_diagnostics<cr>",
+vim.keymap.set("n", "<space>q", "<cmd>Trouble document_diagnostics<cr>",
   { silent = true, noremap = true }
 )
 

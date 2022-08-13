@@ -3,8 +3,8 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
--- local opts = { noremap = true, silent = true }
--- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+local opts = { noremap = true, silent = true }
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 -- vim.keymap.set('n', '[e', vim.diagnostic.goto_prev, opts)
 -- vim.keymap.set('n', ']e', vim.diagnostic.goto_next, opts)
 -- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
@@ -63,6 +63,12 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     update_in_insert = true,
   }
 )
+
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 nvim_lsp.tsserver.setup {
   on_attach = function(client, buffer)
