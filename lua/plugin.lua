@@ -31,7 +31,8 @@ require('packer').startup(function(use)
   use 'rafamadriz/friendly-snippets'
 
   -- Colorschema
-  use 'folke/tokyonight.nvim'
+  -- use 'folke/tokyonight.nvim'
+  use 'sainnhe/sonokai'
 
   -- Syntax
   use {
@@ -101,7 +102,7 @@ require('packer').startup(function(use)
   }
 
   -- Scroll bar
-  use("petertriho/nvim-scrollbar")
+  -- use("petertriho/nvim-scrollbar")
 
   -- Auto pair
   use {
