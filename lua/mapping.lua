@@ -17,8 +17,13 @@ vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = t
 vim.keymap.set('n', '<Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 
-vim.keymap.set('n', '<C-f>', ':Telescope live_grep<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-p>', ':Telescope find_files<CR>', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<C-f>', ':Telescope live_grep<CR>', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<C-p>', ':Telescope find_files<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-f>',
+  ":lua require('fzf-lua').grep({ search = '', multiprocess = true })<CR>",
+  { noremap = true, silent = true })
+vim.keymap.set('n', '<C-p>', ":lua require('fzf-lua').files({ multiprocess = true })<CR>",
+  { noremap = true, silent = true })
 
 vim.keymap.set("n", "<space>a", "<cmd>Trouble workspace_diagnostics<cr>",
   { silent = true, noremap = true }

@@ -63,12 +63,16 @@ require('packer').startup(function(use)
   use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' }
 
   -- Finder
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    -- or                            , branch = '0.1.x',
-    requires = { { 'nvim-lua/plenary.nvim' } }
+  -- use {
+  --   'nvim-telescope/telescope.nvim', tag = '0.1.0',
+  --   -- or                            , branch = '0.1.x',
+  --   requires = { { 'nvim-lua/plenary.nvim' } }
+  -- }
+  -- use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use { 'ibhagwan/fzf-lua',
+    -- optional for icon support
+    requires = { 'kyazdani42/nvim-web-devicons' }
   }
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- List
   use {
